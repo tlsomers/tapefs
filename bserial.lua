@@ -90,7 +90,7 @@ function bserial.rep(inner, n)
   end,
   function(tape, value)
     for i=1, n do
-      write(tape, value[i])
+      write(tape, inner, value[i])
     end
   end)
 end

@@ -63,7 +63,7 @@ function meta:getBit(i)
 end
 function meta:setBit(i, v)
     self.value = setBit(self.value, i, v)
-    return self.value
+    return self
 end
 function meta:findBit(v)
     return findBit(self.value, v)

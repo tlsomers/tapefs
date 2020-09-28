@@ -81,6 +81,7 @@ function reserveBlock(tape, superBlock)
       freeBlock = superBlock.blockSize * 8 * (i-1) + n
       bm:setBit(n, true)
       writeBitMap(tape, superBlock, i+2, bm)
+      break
     end
   end
   if not freeBlock or freeBlock > superBlock.blocks then

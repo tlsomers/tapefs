@@ -38,7 +38,6 @@ local function read(tape, structure)
 end
 
 local function write(tape, structure, value)
-  print(tape, structure, value)
   if type(structure) == "table" then
     for i=1, #structure do
       s2 = structure[i]

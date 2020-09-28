@@ -177,7 +177,7 @@ return {
     writeSuperBlock = writeSuperBlock;
     readINode = readINode;
     writeINode = writeINode;
-    createINode = makeINode;
+    createINode = createINode;
     clearINode = clearINode;
     tape = findTape;
     reserveBlock = reserveBlock;

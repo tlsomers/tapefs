@@ -76,10 +76,10 @@ function reserveBlock(tape, superBlock)
   local freeBlock
   for i=1, 2 do
     local bm = readBitMap(tape, superBlock, i+2)
-    local n = bm.findBit(false)
+    local n = bm:findBit(false)
     if n then
       freeBlock = superBlock.blockSize * 8 * (i-1) + n
-      bm.setBit(n, true)
+      bm:setBit(n, true)
       writeBitMap(tape, superBlock, i+2, bm)
     end
   end
@@ -97,11 +97,11 @@ function freeBlock(tape, superBlock, index)
     index = index - superBlock.blockSize * 8
   end
   local bm = readBitMap(tape, superBlock, bitBlock+2)
-  if not bm.getBit(index) then
+  if not bm:getBit(index) then
     error("Cannot free free block")
   end
 
-  bm.setBit(index, false)
+  bm:setBit(index, false)
   writeBitMap(tape, superBlock, bitBlock + 2, bm)
 
   superBlock.freeBlocks = superBlock.freeBlocks - 1
@@ -115,8 +115,8 @@ function createINode(tape, superBlock, owner, mode)
     end
 
     local inodeMap = readBitMap(tape, superBlock, 2)
-    local freeBit = inodeMap.findBit(false)
-    writeBitMap(tape, superBlock, 2, inodeMap.setBit(freeBit, true))
+    local freeBit = inodeMap:findBit(false)
+    writeBitMap(tape, superBlock, 2, inodeMap:setBit(freeBit, true))
 
     superBlock.freeInodes = superBlock.freeInodes - 1
     return {

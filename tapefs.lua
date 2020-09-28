@@ -141,11 +141,10 @@ end
 
 function createSuperBlock(tape, blockSize)
     blockSize = blockSize or DEFAULT_BLOCK_SIZE
-llo world
     local blockCount = math.floor(tape.getSize() / blockSize) - 4
     local inodeBlocks = math.floor(blockCount / (3 * (blockSize / INODE_SIZE)))
 
-    local superBlock = {}
+    local superBlock = {magic = 0xEF54}
     superBlock.blockSize = blockSize
     superBlock.inodes = inodeBlocks * (blockSize / INODE_SIZE)
     superBlock.blocks = blockCount - inodeBlocks

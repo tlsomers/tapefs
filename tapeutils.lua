@@ -363,7 +363,7 @@ function serializeUtils(tape)
         return tape.seek(p - tape.getPosition())
     end
 
-    function tape.clear(tape)
+    function tape.clear()
         tape.seek(-math.huge)
         local rem = tape.getSize()
         local str = ("\000"):rep(256)

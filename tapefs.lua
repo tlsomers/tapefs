@@ -76,10 +76,10 @@ function reserveBlock(tape, superBlock)
   local freeBlock
   for i=1, 2 do
     local bm = readBitMap(tape, superBlock, i+2)
-    local n = bs.findBit(false)
+    local n = bm.findBit(false)
     if n then
       freeBlock = superBlock.blockSize * 8 * (i-1) + n
-      bs.setBit(n, true)
+      bm.setBit(n, true)
       writeBitMap(tape, superBlock, i+2, bm)
     end
   end

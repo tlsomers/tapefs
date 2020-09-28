@@ -88,4 +88,5 @@ return {
     findBit = findBit;
     create = create;
     ofString = ofString;
+    toString = toString;
 }

@@ -22,7 +22,7 @@ local inodeStructure = {
   bs.field("direct", bs.rep(
     bs.map(bs.uint32,
       function (i) return i end,
-      function (i) if i == nil then return 0 else return i end
+      function (i) if i == nil then return 0 else return i end end
     ), (INODE_SIZE / 4) - 5)),
   bs.field("indirect", bs.uint32),
   bs.field("indirect2", bs.uint32)
